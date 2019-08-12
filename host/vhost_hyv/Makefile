@@ -1,3 +1,4 @@
+export KSRC=/usr/src/linux-source-3.13.0/linux-source-3.13.0
 LINUX_SRC_PATH = /lib/modules/$(shell uname -r)/build
 VHOST_C=$(KSRC)/drivers/vhost/vhost.c
 
@@ -17,9 +18,9 @@ vhost_mem.c:
 	echo "" >> vhost_mem.c
 	echo "#include <vhost.h>" >> vhost_mem.c
 	echo "" >> vhost_mem.c
-	head -n+920 $(VHOST_C) | tail -n16 >> vhost_mem.c
+	head -n+921 $(VHOST_C) | tail -n16 >> vhost_mem.c
 	echo "" >> vhost_mem.c
-	head -n+1084 $(VHOST_C) | tail -n36 >> vhost_mem.c
+	head -n+1085 $(VHOST_C) | tail -n36 >> vhost_mem.c
 	sed -i 's/translate_desc/vhost_gpm_to_hvm/g' vhost_mem.c
 	sed -i '33s/static //g' vhost_mem.c
 
